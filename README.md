@@ -1,23 +1,27 @@
-# Hand written digits recognition on STM32F4
+# Artificial Intelligence on microcontrollers
 
-![alt text](https://i.imgur.com/0YPdsCz.png "Hand written digits recognition on STM32F4")
-![alt text](https://codetolight.files.wordpress.com/2017/11/network.png?w=1108)
+ABSTRACT
 
-## Demo 
-Link to demo video : https://www.youtube.com/watch?v=_YbzxUagpbw
-### CNN MODEL
-Simple CNN Model Is trained on MNIST dataset for handwriten digit recignition.
-Tensorflow 2.0 with Keras is used for training and saving the model.
-Link to the python code: 
-https://github.com/nimaaghli/Mnist_TF2
+The goal of this project is to research and test out the applications of artificial intelligence on microcontrollers.
+The multiple stages of capturing and processing data, determining the necessary neural network architecture, training the model, converting the model into optimised code and finally to run the code to process the data is dealt with in depth.
+The STM32Cube.AI package and micro Tensor are the two alternatives explored and compared in this project.
 
 
-### STMCUBEMX.AI
-STMCUBEMX.AI is used to generate C code from the trained model.
-Project is generated for SW4STM32 using STM32CUBEMX. SW4STM32 can be used to import and falsh the board or STM32AI_MNIST.ioc file can be loaded to CUBEMX to generate the code for diffrent softwares.  
-## Hardware
-This Demo runs on STM32F429I-DISC1 baord only, but can be easly modifed to be used on any STM32F4 board 
+## SOFTWARES 
 
+STM32CubeMX with X-CUBE-AI 
 
+-	STM32CubeMX is a graphical tool that allows a very easy configuration of STM32 microcontrollers and microprocessors.
+X-CUBE-AI is an STM32Cube Expansion Package part of the STM32Cube.
+AI ecosystem and extending STM32CubeMX capabilities with automatic conversion of pre-trained Neural Network and integration of generated optimized library into the user's project.
 
+## Keil
+
+Keil MicroVision is a free software which solves many of the pain points for an embedded program developer.
+This software is an integrated development environment (IDE).
+
+## MicroTensor
+
+-	uTensor is an extremely light-weight machine learning inference framework built on Mbed and Tensorflow. 
+A model is constructed and trained in TensorFlow. uTensor takes the model and produces a .cpp and .hpp file.
 
