@@ -1,0 +1,57 @@
+Handwritten Digit Recognition
+
+To make changes to the model
+
+1. Open anaconda terminal.
+2. Activate a virtual environment that contains Keras, Tensorflow and other necessary software installed--activate "name_of_virtualenvironment"
+3. Move to------------cd AI_on_microcontroller\Number\Mnist_TF2-master
+4. Open jupyter notebook
+5. main.ipynb and CNN.ipynb used to create model for the project
+6. model.h5 is the model used for the project and model.json is the topology of the project
+
+Validate your neural network model
+
+1.Open STM32CubeMX mnist.ioc--------- AI_on_microcontroller\Number\MNIST1\mnist
+2.Run on STM32F429I-DISC1
+3.In additional software choose X-CUBE-AI/Application (Validation for confirmation of working ai), and X-CUBE-AI/X-CUBE-AI
+4.In the X-CUBE-AI section within network choose Keras and model and topology. Load the saved model model.h5------- AI_on_microcontroller\Number\Mnist_TF2-master and load the topology model.json ------ AI_on_microcontroller\Number\Mnist_TF2-master
+5. With compression 4 press analyse and the press validate on desktop.
+6. Use other default pin configs and additional settings and generate code.
+
+Run code to Validate
+
+1. Open mnist.uvprojx file --------AI_on_microcontroller\Number\MNIST1\mnist\MDK-ARM
+2. Build file and Run to have the mnist model and topology (model.h5 and model.json------- AI_on_microcontroller\Number\Mnist_TF2-master) working on the microcontroller
+3. Check serial connection with apps such as Tera term. Setup the baud rate on the serial port to 115200.
+4. Validate on Target the mnist.ioc file----AI_on_microcontroller\Number\MNIST1\mnist
+
+CONNECTION COULD NOT BE SETUP (BOARD NOT FOUND)
+-	Damage in board
+-	Firmware update issue
+
+Run application from your neural network model
+
+1.Open STM32CubeMX STM32AI_MNIST.ioc-----------AI_on_microcontroller\Number\ STM32AI_MNIST-master
+2.Run on STM32F429I-DISC1
+
+Run code for Application purpose
+
+1. Open STM32AI_MNIST.uvprojx file ----AI_on_microcontroller\Number\STM32AI_MNIST-master\MDK-ARM
+2. Build file and Run to test the handwritten number recognition (model.h5 and model.json------- AI_on_microcontroller\Number\Mnist_TF2-master) working on the microcontroller
+
+main.c----------Application\User (contains all the main process)
+	INPUT_IMAGE_WIDTH= 28 defined in main.c from network.h--- AI_NETWORK_IN_NUM    
+	INPUT_IMAGE_HEIGHT= 28 defined in main.c from network.h--- AI_NETWORK_IN_NUM
+	NUM_CLASSES=  10 defined in main.c from network.h--- AI_NETWORK_OUT_NUM
+MX_X_CUBE_AI_Process() and MX_X_CUBE_AI_Init() from app_x-cube-ai.c
+
+app_x-cube-ai.c---------- Application\User (contains all the AI calling functions)
+	1.	ai_error ai_network_create(ai_handle* network, const ai_buffer* network_config);
+	2.	ai_bool ai_network_init(ai_handle network, const ai_network_params* params);
+	3.	ai_i32 ai_network_run(ai_handle network, const ai_buffer* input, ai_buffer* output);
+network_data.c----------Middlewares\ST\AI\AI\data (contains all the weights)
+network.c----------Middlewares\ST\AI\AI\src (contains all the layers and details of the neural network)
+MX_X_CUBE_AI_Process() and  MX_X_CUBE_AI_Init() function within main.c and defined in app_x-cube-ai.c used to get input and output data from the neural network.
+
+ERROR IN RUNNING THE AI (COULD NOT CALL THE FUNCTION TO RUN THE AI)
+-	MX_X_CUBE_AI_Process(in_data,out_data,1) does not work

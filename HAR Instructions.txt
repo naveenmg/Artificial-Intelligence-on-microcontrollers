@@ -1,0 +1,40 @@
+Working with STM32CubeMX AI package
+
+Human Activity Recognition 
+
+Step 1: Capture and Process data
+use available datasets such as actitracker_raw for HAR---------AI_on_microcontroller\Keras
+
+Step 2: Collect data and Architect a neural topology & Step 3: Train your neural network model
+Requirements
+Keras
+Tensorflow
+anaconda --------additional software to run virtual environment
+jupyter notebook------additional software to create model
+
+To create a model or make changes to the model
+1. Open anaconda terminal.
+2. Activate a virtual environment that contains Keras, Tensorflow and other necessary software installed--activate "name_of_virtualenvironment"
+3. Move to------------cd AI_on_microcontroller\Keras
+4. Open jupyter notebook
+5. Sample neural network.ipynb to check if keras on tensorflow works
+6. Sample HAR.ipynb example model used for the project
+
+Step 4: Convert your neural network model
+1.Open STM32CubeMX new project
+2.Choose the board necesaary. Minimum RAM and flash required for the model compared.Run on STM32 NUCLEO-F767ZI
+3.In additional software choose X-CUBE-AI/Application(Validation for confirmation of working ai, Application for testing process), and X-CUBE-AI/X-CUBE-AI
+4.In the X-CUBE-AI section within network choose Keras and saved model. Load the saved model har.h5-------AI_on_microcontroller\HAR_AI
+5. With compression 4 press analyse and the press validate on desktop.
+6. Use other default pin configs and additional settings and generate code.
+
+Step 5: Run code to Process data
+
+1. Open HAR_AI.uvprojx file --------------------AI_on_microcontroller\HAR_AI\MDK-ARM
+2. Build file and Run to have the HAR AI model(har.h5-------AI_on_microcontroller\HAR_AI) working on the microcontroller
+3. Check serial connection with apps such as Tera term. Setup the baud rate on the serial port to 115200.
+4. Validate on Target from the HAR_AI.ioc file. -------------------AI_on_microcontroller\HAR_AI
+
+network_data.c----------Middlewares\ST\AI\AI\data (contains all the weights)
+network.c----------Middlewares\ST\AI\AI\src (contains all the layers and details of the neural network)
+MX_X_CUBE_AI_Process(); function within main.c and defined in app_x-cube-ai.c used to get input and output data from the neural network.

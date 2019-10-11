@@ -1,0 +1,34 @@
+Working with microTensor
+
+Handwritten Digit Recognition
+
+Requirements
+•	Mbed Command Line Tool (Mbed-cli)
+•	uTensor-cli (graph to source compiler)
+•	TensorFlow (Comes with uTensor-cli)
+•	Mbed board (or, with Mbed Simulator)
+•	TeraTerm (For serial communication)
+
+Auto generate c++ model with utensor-cli
+-	activate tensorflow (virtual environment)
+-	pip install mbed-cli (requirements mercurial & git) 
+-	pip install utensor-cgen
+-	mbed new my_uTensor
+-	cd my_uTensor
+-	mbed add https://github.com/uTensor/uTensor
+-	utensor-cli convert cifar10_cnn.pb --output-nodes /fully_connect_2/logits
+
+model.py is the script where the CNN graph is built. ---- AI_on_microcontroller\microtensor\ my_uTensor\simple_cnn_tutorial-master
+
+train.py is the training script. ----- AI_on_microcontroller\microtensor\my_uTensor\  simple_cnn_tutorial-master
+
+cifar10_cnn.pb is the pre-trained model.-------- AI_on_microcontroller\microtensor\my_uTensor\ simple_cnn_tutorial-master
+
+img_data.h is the data to run a test with on MCU. ------ AI_on_microcontroller\microtensor\ my_uTensor\simple_cnn_tutorial-master
+
+cifar10_cnn_weight.hpp contains all the weights----- AI_on_microcontroller\microtensor\ my_uTensor\simple_cnn_tutorial-master\models
+
+cifar10_cnn.cpp and cifar10_cnn.hpp are the generated c++ model------ AI_on_microcontroller\ microtensor\my_uTensor\simple_cnn_tutorial-master\models
+
+Compile file main.cpp on mbed board STM32 NUCLEO-F767ZI------AI_on_microcontroller\ microtensor\my_uTensor\simple_cnn_tutorial-master
+
